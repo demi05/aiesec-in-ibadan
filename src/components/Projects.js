@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
 import volunteers from "../assets/images/volunteers.svg";
 import volunteerLady from "../assets/images/volunteerLady.svg";
+import { RxCaretRight, RxCaretLeft } from "react-icons/rx";
 
 const ProjectSlider = () => {
   const projectData = [
@@ -11,6 +12,8 @@ const ProjectSlider = () => {
     { name: "Project4", description: "description", image: volunteerLady },
   ];
 
+  const sliderRef = useRef(null);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -18,55 +21,59 @@ const ProjectSlider = () => {
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 768, // md breakpoint
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
-  const nextArrow = () => (
+  const prevArrow = () => (
     <div
-      className="slick-arrow slick-next"
-      onClick={() => sliderRef.slickNext()}
-      style={{
-        position: "absolute",
-        bottom: "-40px",
-        right: "50%",
-        cursor: "pointer",
-        transform: "translateX(50%)",
-        zIndex: 1,
-      }}
+      className="absolute bottom-4 left-4 cursor-pointer text-white"
+      onClick={() => sliderRef.current.slickPrev()}
     >
-      <span className="text-white">Next</span>
+      <RxCaretLeft size={24} />
     </div>
   );
 
-  let sliderRef = React.createRef();
+  const nextArrow = () => (
+    <div
+      className="absolute bottom-4 right-4 cursor-pointer text-white"
+      onClick={() => sliderRef.current.slickNext()}
+    >
+      <RxCaretRight size={24} />
+    </div>
+  );
 
   return (
     <section id="projects" className="py-16 mt-32 bg-darkBlue">
-      <h1 className="text-[40px] leading-[46.96px] text-white mb-8 text-center">
-        Our{" "}
-        <span className="text-[82.52px] font-bold leading-[96.88px]">
-          Projects
-        </span>
+      <h1 className="text-4xl leading-10 text-white mb-8 text-center">
+        Our <span className="text-6xl font-bold leading-12">Projects</span>
       </h1>
-      <Slider
-        ref={(c) => (sliderRef = c)}
-        {...settings}
-        className="w-[80%] mx-auto"
-      >
-        {projectData.map((project, index) => (
-          <div key={index} className="p-4">
-            <img
-              src={project.image}
-              alt={project.name}
-              className="w-full object-cover mb-4"
-            />
-            <div className="text-center">
-              <h3 className="text-white text-xl font-bold">{project.name}</h3>
-              <p className="text-white">{project.description}</p>
+      <div className="relative w-11/12 mx-auto md:w-10/12">
+        <Slider ref={sliderRef} {...settings}>
+          {projectData.map((project, index) => (
+            <div key={index} className="p-4">
+              <img
+                src={project.image}
+                alt={project.name}
+                className="w-full object-cover mb-4 lg:w-[50%] mx-auto"
+              />
+              <div className="text-center">
+                <h3 className="text-white text-xl font-bold">{project.name}</h3>
+                <p className="text-white">{project.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
-      {nextArrow()}
+          ))}
+        </Slider>
+        {prevArrow()}
+        {nextArrow()}
+      </div>
     </section>
   );
 };

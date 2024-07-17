@@ -1,4 +1,5 @@
 import laptopPeople from "../assets/images/laptopPeople.svg";
+
 const WhoWeAre = () => {
   return (
     <div className="flex flex-col items-center justify-between pb-20">
@@ -10,18 +11,18 @@ const WhoWeAre = () => {
           </span>
         </h1>
       </div>
-      <div className="grid grid-cols-2 items-center">
-        <div>
+      <div className="grid grid-cols-1 items-center md:grid-cols-2 gap-6">
+        <div className="flex justify-center">
           <img
             src={laptopPeople}
             alt="people around a laptop"
-            className="max-w-[100%]"
+            className="max-w-full"
           />
         </div>
-        <div className="flex flex-col items-start gap-6">
-          <p className="font-light leading-[34.68px] text-left w-[60%] ">
-            Our entity is commited to providing the best services and solutions.
-            Our members are passionate about striving for excellence{" "}
+        <div className="flex flex-col items-center md:items-start gap-6">
+          <p className="font-light leading-[34.68px] text-center w-[80%] md:text-left md:w-[60%]">
+            Our entity is committed to providing the best services and
+            solutions. Our members are passionate about striving for excellence.
           </p>
           <button className="bg-grey font-bold leading-[24.15px] py-2 px-4">
             Learn More
