@@ -4,9 +4,9 @@ const WhoWeAre = () => {
   return (
     <div className="flex flex-col items-center justify-between pb-20">
       <div className="bg-lightPurple w-screen py-10">
-        <h1 className="text-[40px] leading-[46.96px] text-deeperBlack">
+        <h1 className="text-[30px] leading-[46.96px] text-deeperBlack md:text-[40px]">
           Who{" "}
-          <span className="text-[82.52px] font-bold leading-[96.88px]">
+          <span className="text-[70px] font-bold leading-[96.88px] md:text-[82.52px]">
             We Are
           </span>
         </h1>
