@@ -1,0 +1,35 @@
+import laptopPeople from "../assets/images/laptopPeople.svg";
+const WhoWeAre = () => {
+  return (
+    <div className="flex flex-col items-center justify-between pb-20">
+      <div className="bg-lightPurple w-screen py-10">
+        <h1 className="text-[40px] leading-[46.96px] text-deeperBlack">
+          Who{" "}
+          <span className="text-[82.52px] font-bold leading-[96.88px]">
+            We Are
+          </span>
+        </h1>
+      </div>
+      <div className="grid grid-cols-2 items-center">
+        <div>
+          <img
+            src={laptopPeople}
+            alt="people around a laptop"
+            className="max-w-[100%]"
+          />
+        </div>
+        <div className="flex flex-col items-start gap-6">
+          <p className="font-light leading-[34.68px] text-left w-[60%] ">
+            Our entity is commited to providing the best services and solutions.
+            Our members are passionate about striving for excellence{" "}
+          </p>
+          <button className="bg-grey font-bold leading-[24.15px] py-2 px-4">
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default WhoWeAre;
